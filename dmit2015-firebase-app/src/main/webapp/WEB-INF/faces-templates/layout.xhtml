@@ -46,12 +46,16 @@
                     <!-- https://www.primefaces.org/showcase/icons.xhtml?jfwid=a2b2f -->
                     <p:menuitem value="Home" icon="pi pi-home" url="#{request.contextPath}/index.xhtml"/>
 
-                    <!--                <p:submenu label="Students" icon="pi pi-file">-->
-                    <!--                    <p:menuitem value="List" icon="pi pi-list"-->
-                    <!--                                url="#{request.contextPath}/students/index.xhtml"/>-->
-                    <!--                    <p:menuitem value="Create" icon="pi pi-plus"-->
-                    <!--                                url="#{request.contextPath}/students/create.xhtml"/>-->
-                    <!--                </p:submenu>-->
+                    <p:submenu label="Counter" icon="pi pi-file">
+                        <p:menuitem value="ApplicationScoped"
+                                    url="#{request.contextPath}/counter/applicationScoped-counter.xhtml"/>
+                        <p:menuitem value="SessionScoped"
+                                    url="#{request.contextPath}/counter/sessionScoped-counter.xhtml"/>
+                        <p:menuitem value="ViewScoped"
+                                    url="#{request.contextPath}/counter/viewScoped-counter.xhtml"/>
+                        <p:menuitem value="RequestScoped"
+                                    url="#{request.contextPath}/counter/requestScoped-counter.xhtml"/>
+                    </p:submenu>
 
                 </p:menubar>
             </h:form>

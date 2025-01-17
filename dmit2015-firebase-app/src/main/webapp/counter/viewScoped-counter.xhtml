@@ -1,0 +1,53 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="ViewScoped Counter"/>
+
+    <ui:define name="maincontent">
+
+        <h1>ViewScoped Counter</h1>
+
+        <!--Display all messages in FacesContext -->
+        <p:messages id="messages">
+            <p:autoUpdate/>
+        </p:messages>
+
+        <h:form prependId="false">
+            <p:focus context="formPanel"/>
+
+            <p:panel id="formPanel" header="Form Panel">
+                <div class="ui-fluid">
+
+                    <div class="formgroup-inline">
+                        <div class="field">
+                            <p:commandButton value="Submit"
+                                             action="#{currentCounterViewScopedView.onSubmit()}"
+                                             update=":messages :growl"
+                            >
+                            </p:commandButton>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </p:panel>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

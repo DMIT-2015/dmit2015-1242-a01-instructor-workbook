@@ -18,13 +18,20 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>jakarta.enterprise</groupId>
-            <artifactId>jakarta.enterprise.cdi-api</artifactId>
-            <version>4.1.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>jakarta.enterprise</groupId>-->
+<!--            <artifactId>jakarta.enterprise.cdi-api</artifactId>-->
+<!--            <version>4.1.0</version>-->
+<!--        </dependency>-->
 
-        <!-- CDI implementation for Apache Tomcat 11 -->
+<!--        <dependency>-->
+<!--            <groupId>jakarta.faces</groupId>-->
+<!--            <artifactId>jakarta.faces-api</artifactId>-->
+<!--            <version>4.1.2</version>-->
+<!--        </dependency>-->
+
+
+                <!-- CDI implementation for Apache Tomcat 11 -->
         <dependency>
             <groupId>org.jboss.weld.servlet</groupId>
             <artifactId>weld-servlet-shaded</artifactId>
@@ -99,6 +106,14 @@
             <version>20240325.1</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.glassfish.expressly/expressly -->
+<!--        <dependency>-->
+<!--            <groupId>org.glassfish.expressly</groupId>-->
+<!--            <artifactId>expressly</artifactId>-->
+<!--            <version>5.0.0</version>-->
+<!--        </dependency>-->
+
+
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -126,6 +141,51 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>
             </plugin>
+
+            <!-- Plugin to build a bootable JAR for WildFly -->
+<!--            <plugin>-->
+<!--                &lt;!&ndash; https://docs.wildfly.org/bootablejar/#wildfly_jar_dev_mode &ndash;&gt;-->
+<!--                &lt;!&ndash; mvn wildfly-jar:dev-watch &ndash;&gt;-->
+<!--                <groupId>org.wildfly.plugins</groupId>-->
+<!--                <artifactId>wildfly-jar-maven-plugin</artifactId>-->
+<!--                <version>12.0.0.Final</version>-->
+<!--                <configuration>-->
+<!--                    <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#35.0.0.Final</feature-pack-location>-->
+<!--                    <layers>-->
+<!--                        &lt;!&ndash; https://docs.wildfly.org/35/Bootable_Guide.html#wildfly_layers &ndash;&gt;-->
+<!--                        <layer>cloud-server</layer>-->
+<!--                        <layer>jsf</layer>-->
+<!--                        <layer>microprofile-config</layer>-->
+<!--                        <layer>microprofile-rest-client</layer>-->
+<!--                    </layers>-->
+<!--                    <excluded-layers>-->
+<!--                        <layer>deployment-scanner</layer>-->
+<!--                    </excluded-layers>-->
+<!--                    <plugin-options>-->
+<!--                        <jboss-fork-embedded>true</jboss-fork-embedded>-->
+<!--                    </plugin-options>-->
+<!--                    &lt;!&ndash; https://docs.wildfly.org/bootablejar/#wildfly_jar_enabling_debug &ndash;&gt;-->
+<!--                    <jvmArguments>-->
+<!--                        &lt;!&ndash; https://www.jetbrains.com/help/idea/attaching-to-local-process.html#attach-to-local &ndash;&gt;-->
+<!--                        &lt;!&ndash; To attach a debugger to the running server from IntelliJ IDEA-->
+<!--                            1. From the main menu, choose `Run | Attach to Process`-->
+<!--                            2. IntelliJ IDEA will show the list of running local processes. Select the process with the `xxx-bootable.jar` name to attach to.-->
+<!--                        &ndash;&gt;-->
+<!--                        <arg>-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n</arg>-->
+<!--                    </jvmArguments>-->
+<!--                    <timeout>120</timeout>-->
+
+<!--                    &lt;!&ndash; Build a bootable JAR for cloud environment. &ndash;&gt;-->
+<!--                    <cloud />-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>package</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 </project>
