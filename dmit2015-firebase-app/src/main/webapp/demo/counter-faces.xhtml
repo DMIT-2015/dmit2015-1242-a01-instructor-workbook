@@ -1,0 +1,51 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Counter - Faces only"/>
+
+    <ui:define name="maincontent">
+        <h1>Counter - Faces only</h1>
+
+        <h:messages id="messages" />
+        <h:outputText id="counterResult" />
+
+        <h:form id="requestScopeForm">
+            <h:commandButton value="Increment RequestScope Counter"
+                             action="#{currentCounterRequestScopedView.onSubmit()}">
+            </h:commandButton>
+        </h:form>
+        <br />
+        <h:form id="viewScopeForm">
+            <h:commandButton value="Increment ViewScope Counter"
+                             action="#{currentCounterViewScopedView.onSubmit()}">
+            </h:commandButton>
+        </h:form>
+        <br />
+        <h:form id="sessionScopeForm">
+            <h:commandButton value="Increment SessionScope Counter"
+                             action="#{currentCounterSessionScopedView.onSubmit()}">
+            </h:commandButton>
+        </h:form>
+        <br />
+        <h:form id="applicationScopeForm">
+            <h:commandButton value="Increment ApplicationScope Counter"
+                             action="#{currentCounterApplicationScopedView.onSubmit()}">
+            </h:commandButton>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

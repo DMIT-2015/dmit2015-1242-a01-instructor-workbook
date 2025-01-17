@@ -40,8 +40,6 @@
     <header>
         <div class="card">
             <h:form>
-                <p:growl id="growl"/>
-
                 <p:menubar>
                     <!-- https://www.primefaces.org/showcase/icons.xhtml?jfwid=a2b2f -->
                     <p:menuitem value="Home" icon="pi pi-home" url="#{request.contextPath}/index.xhtml"/>
@@ -57,12 +55,25 @@
                                     url="#{request.contextPath}/counter/requestScoped-counter.xhtml"/>
                     </p:submenu>
 
+                    <p:submenu label="Demo">
+                        <p:menuitem value="Counter - Faces only"
+                                    url="#{request.contextPath}/demo/counter-faces.xhtml"/>
+                        <p:menuitem value="Counter - Faces and AJAX"
+                                    url="#{request.contextPath}/demo/counter-faces-ajax.xhtml"/>
+                        <p:menuitem value="Counter - Faces and PrimeFaces"
+                                    url="#{request.contextPath}/demo/counter-faces-primefaces.xhtml"/>
+                        <p:menuitem value="Form Example"
+                                    url="#{request.contextPath}/demo/form-example.xhtml"/>
+                    </p:submenu>
+
                 </p:menubar>
             </h:form>
         </div>
     </header>
 
     <main>
+        <p:growl id="growl"/>
+
         <ui:insert name="maincontent">
             NO MAIN CONTENT PROVIDED
         </ui:insert>

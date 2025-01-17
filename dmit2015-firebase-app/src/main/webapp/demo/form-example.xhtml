@@ -36,15 +36,15 @@
          <div class="ui-fluid">
             <div class="field">
                <p:outputLabel for="textValue" >Text Value</p:outputLabel>
-               <p:inputText id="textValue" value="#{currentFacesDemoFormView.textValue}"/>
+               <p:inputText id="textValue" value="#{currentFormExampleView.textValue}"/>
             </div>
             <div class="field">
                <p:outputLabel for="numberValue" >Number Value</p:outputLabel>
-               <p:inputNumber id="numberValue" value="#{currentFacesDemoFormView.numberValue}"/>
+               <p:inputNumber id="numberValue" value="#{currentFormExampleView.numberValue}"/>
             </div>
             <div class="field col-12 md:col-4">
                <p:outputLabel for="@next" value="Select One Value"/>
-               <p:selectOneMenu id="option" value="#{currentFacesDemoFormView.selectValue}">
+               <p:selectOneMenu id="option" value="#{currentFormExampleView.selectValue}">
                   <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true"/>
                   <f:selectItem itemLabel="Select 1" itemValue="selectedValue1"/>
                   <f:selectItem itemLabel="Select 2" itemValue="selectedValue2"/>
@@ -55,8 +55,8 @@
             </div>
             <div class="field col-12 md:col-4">
                <p:outputLabel for="@next" value="Select Multiple Values"/>
-               <p:selectManyMenu value="#{currentFacesDemoFormView.multipleSelectedValues}">
-                  <f:selectItems value="#{currentFacesDemoFormView.multipleSelectOptions}"
+               <p:selectManyMenu value="#{currentFormExampleView.multipleSelectedValues}">
+                  <f:selectItems value="#{currentFormExampleView.multipleSelectOptions}"
                                  var="currentSelectItem"
                                  itemLabel="#{currentSelectItem}"
                                  itemValue="#{currentSelectItem}" />
@@ -64,8 +64,8 @@
             </div>
             <div class="field col-12 md:col-4">
                <p:outputLabel for="@next" value="Select Multiple Checboxes"/>
-               <p:selectManyCheckbox value="#{currentFacesDemoFormView.multipleCheckboxValues}">
-                  <f:selectItems value="#{currentFacesDemoFormView.multipleCheckboxOptions}"
+               <p:selectManyCheckbox value="#{currentFormExampleView.multipleCheckboxValues}">
+                  <f:selectItems value="#{currentFormExampleView.multipleCheckboxOptions}"
                                  var="currentSelectItem"
                                  itemLabel="#{currentSelectItem}"
                                  itemValue="#{currentSelectItem}" />
@@ -73,8 +73,8 @@
             </div>
             <div class="field ">
                <p:outputLabel for="@next" value="Select Radios"/>
-               <p:selectOneRadio value="#{currentFacesDemoFormView.radioValue}">
-                  <f:selectItems value="#{currentFacesDemoFormView.radioOptions}"
+               <p:selectOneRadio value="#{currentFormExampleView.radioValue}">
+                  <f:selectItems value="#{currentFormExampleView.radioOptions}"
                                  var="currentSelectItem"
                                  itemLabel="#{currentSelectItem}"
                                  itemValue="#{currentSelectItem}" />
@@ -83,7 +83,7 @@
 
             <div class="field">
                <p:outputLabel for="textArea" >Textarea Value</p:outputLabel>
-               <p:inputTextarea id="textArea" value="#{currentFacesDemoFormView.textareaValue}"
+               <p:inputTextarea id="textArea" value="#{currentFormExampleView.textareaValue}"
                                 rows="5"
                                 cols="50">
                </p:inputTextarea>
@@ -92,13 +92,13 @@
             <div class="field">
                <p:selectBooleanCheckbox  id="booleanCheckbox"
                                          itemLabel="Check me out"
-                                         value="#{currentFacesDemoFormView.checkbox}"/>
+                                         value="#{currentFormExampleView.checkbox}"/>
             </div>
 
             <div class="field col-12 md:col-2">
                <p:outputLabel for="dateValue" >Date Value</p:outputLabel>
                <p:datePicker id="dateValue"
-                             value="#{currentFacesDemoFormView.dateValue}"
+                             value="#{currentFormExampleView.dateValue}"
                              pattern="yyyy-MM-dd"
                              monthNavigator="true"
                              yearNavigator="true"
@@ -109,7 +109,7 @@
 
             <div class="field col-12 md:col-2">
                <p:commandButton value="Submit"
-                                action="#{currentFacesDemoFormView.submit}"
+                                action="#{currentFormExampleView.submit}"
                                 update=":messages "
                >
                </p:commandButton>

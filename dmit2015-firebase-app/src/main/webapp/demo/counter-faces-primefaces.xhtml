@@ -1,0 +1,59 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Scope Counter - PrimeFaces version"/>
+
+    <ui:define name="maincontent">
+        <h1>Scope Counter - PrimeFaces version</h1>
+
+        <p:messages id="messages"/>
+        <h:outputText id="counterResult"/>
+
+        <div class="formgroup-inline">
+            <h:form id="requestScopeForm"  class="field">
+                <p:commandButton value="Increment RequestScoped Counter"
+                                 action="#{currentCounterRequestScopedView.onSubmit()}"
+                                 update=":messages :counterResult"
+                >
+                </p:commandButton>
+            </h:form>
+
+            <h:form id="viewScopeForm"  class="field">
+                <p:commandButton value="Increment ViewScoped Counter"
+                                 action="#{currentCounterViewScopedView.onSubmit()}"
+                                 update=":messages :counterResult"
+                >
+                </p:commandButton>
+            </h:form>
+
+            <h:form id="sessionScopeForm" class="field">
+                <p:commandButton value="Increment SessionScoped Counter"
+                                 action="#{currentCounterSessionScopedView.onSubmit()}"
+                                 update=":messages :counterResult">
+                </p:commandButton>
+            </h:form>
+
+            <h:form id="applicationScopeForm" class="field">
+                <p:commandButton value="Increment ApplicationScoped Counter"
+                                 action="#{currentCounterApplicationScopedView.onSubmit()}"
+                                 update=":messages :counterResult">
+                </p:commandButton>
+            </h:form>
+        </div>
+
+    </ui:define>
+
+</ui:composition>

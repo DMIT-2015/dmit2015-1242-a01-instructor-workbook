@@ -10,9 +10,9 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-@Named("currentFacesDemoFormView")
+@Named("currentFormExampleView")
 @RequestScoped
-public class FacesDemoFormView {
+public class FormExampleView {
 
 	// Textfield form field
 	@Getter @Setter
