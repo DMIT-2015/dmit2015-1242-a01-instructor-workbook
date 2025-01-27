@@ -68,6 +68,16 @@
                                     url="#{request.contextPath}/demo/form-example.xhtml"/>
                     </p:submenu>
 
+                    <c:if test="${empty firebaseAuthSignInSession.username}">
+                        <p:menuitem
+                                value="Login"
+                                action="/firebaseAuthSignIn" />
+                    </c:if>
+                    <c:if test="${not empty firebaseAuthSignInSession.username}">
+                        <p:menuitem
+                                value="Logout #{firebaseAuthSignInSession.username}"
+                                action="#{facesLogout.submit}" />
+                    </c:if>
                 </p:menubar>
             </h:form>
         </div>
