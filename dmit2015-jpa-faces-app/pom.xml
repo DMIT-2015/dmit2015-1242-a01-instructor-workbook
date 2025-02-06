@@ -18,6 +18,13 @@
     </properties>
 
     <dependencies>
+
+<!--        <dependency>-->
+<!--            <groupId>jakarta.inject</groupId>-->
+<!--            <artifactId>jakarta.inject-api</artifactId>-->
+<!--            <version>2.0.1</version>-->
+<!--        </dependency>-->
+
         <!-- MicroProfile Config is for reading configuration information from src/main/resources/META-INF/microprofile-config.properties file. -->
         <dependency>
             <groupId>org.eclipse.microprofile.config</groupId>
