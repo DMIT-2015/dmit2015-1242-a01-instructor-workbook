@@ -15,7 +15,7 @@ import java.util.Optional;
 public class JakartaPersistenceStudentService implements StudentService {
 
     // Assign a unitName if there are more than one persistence unit defined in persistence.xml
-    @PersistenceContext //(unitName="pu-name-in-persistence.xml")
+    @PersistenceContext (unitName="postgresql-jpa-pu")
     private EntityManager _entityManager;
 
     @Override

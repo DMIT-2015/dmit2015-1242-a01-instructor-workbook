@@ -14,7 +14,7 @@
         template="/WEB-INF/faces-templates/layout.xhtml"
 >
 
-    <ui:param name="title" value="FirebaseRTDB Student - CRUD"/>
+    <ui:param name="title" value="Student - CRUD"/>
 
     <ui:param name="internalstyles"
               value=".Students-table-header { display: flex; align-items:center; justify-content: space-between; flex-wrap: wrap; }"/>
@@ -29,7 +29,7 @@
 
                 <p:toolbar>
                     <p:toolbarGroup>
-                        <p:commandButton id="createButton"
+                        <p:commandButton id="newButton"
                                          value="New"
                                          icon="pi pi-plus"
                                          actionListener="#{currentStudentCrudView.onOpenNew}"
@@ -107,7 +107,6 @@
 
                     <p:outputPanel id="manage-Student-content" class="ui-fluid">
                         <p:outputPanel rendered="#{not empty currentStudentCrudView.selectedStudent}">
-                            <!-- TODO: Add input field for each editable property of the entity -->
                             <div class="field">
                                 <p:outputLabel for="@next">First Name</p:outputLabel>
                                 <p:inputText

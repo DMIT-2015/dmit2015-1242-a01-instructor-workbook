@@ -54,7 +54,7 @@ public class JakartaPersistenceStudentServiceImplementationArquillianIT { // The
                 .addAsLibraries(pomFile.resolve("com.h2database:h2:2.3.232").withTransitivity().asFile())
                 .addAsLibraries(pomFile.resolve("com.microsoft.sqlserver:mssql-jdbc:12.8.1.jre11").withTransitivity().asFile())
                 .addAsLibraries(pomFile.resolve("com.oracle.database.jdbc:ojdbc11:23.6.0.24.10").withTransitivity().asFile())
-                .addAsLibraries(pomFile.resolve("org.postgresql.jdbc:postgresql:42.7.5").withTransitivity().asFile())
+                .addAsLibraries(pomFile.resolve("org.postgresql:postgresql:42.7.5").withTransitivity().asFile())
 //                .addAsLibraries(pomFile.resolve("com.mysql:mysql-connector-j:9.0.0").withTransitivity().asFile())
 //                .addAsLibraries(pomFile.resolve("org.mariadb.jdbc:mariadb-java-client:3.4.1").withTransitivity().asFile())
                 // .addAsLibraries(pomFile.resolve("org.hibernate.orm:hibernate-spatial:6.6.5.Final").withTransitivity().asFile())

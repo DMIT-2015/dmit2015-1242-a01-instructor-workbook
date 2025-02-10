@@ -44,17 +44,17 @@
 <!--        </properties>-->
 <!--    </persistence-unit>-->
 
-<!--    <persistence-unit name="resource-local-postgresql-jpa-pu" transaction-type="RESOURCE_LOCAL">-->
-<!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+    <persistence-unit name="resource-local-postgresql-jpa-pu" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-<!--        <properties>-->
-<!--            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />-->
-<!--            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost/DMIT2015CourseDB" />-->
-<!--            <property name="jakarta.persistence.jdbc.user" value="user2015" />-->
-<!--            <property name="jakarta.persistence.jdbc.password" value="Password2015" />-->
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost/DMIT2015CourseDB" />
+            <property name="jakarta.persistence.jdbc.user" value="user2015" />
+            <property name="jakarta.persistence.jdbc.password" value="Password2015" />
 
-<!--        </properties>-->
-<!--    </persistence-unit>-->
+        </properties>
+    </persistence-unit>
 
 <!--    <persistence-unit name="resource-local-mysql-jpa-pu" transaction-type="RESOURCE_LOCAL">-->
 <!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
@@ -146,19 +146,19 @@
 <!--        </properties>-->
 <!--    </persistence-unit>-->
 
-<!--    <persistence-unit name="postgresql-jpa-pu" transaction-type="JTA">-->
-<!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
-<!--        <jta-data-source>java:app/datasources/PostgreSQLDS</jta-data-source>-->
+    <persistence-unit name="postgresql-jpa-pu" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>java:app/datasources/PostgreSQLDS</jta-data-source>
 
-<!--        &lt;!&ndash; Data source to use with wildfly-datasources-galleon-pack-->
-<!--            https://github.com/wildfly-extras/wildfly-datasources-galleon-pack &ndash;&gt;-->
-<!--&lt;!&ndash;            <jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>&ndash;&gt;-->
+        <!-- Data source to use with wildfly-datasources-galleon-pack
+            https://github.com/wildfly-extras/wildfly-datasources-galleon-pack -->
+<!--            <jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>-->
 
-<!--        <properties>-->
-<!--            &lt;!&ndash; jakarta.persistence.schema-generation.database.action: drop-and-create, create, update, none &ndash;&gt;-->
-<!--            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>-->
-<!--        </properties>-->
-<!--    </persistence-unit>-->
+        <properties>
+            <!-- jakarta.persistence.schema-generation.database.action: drop-and-create, create, update, none -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+        </properties>
+    </persistence-unit>
 
 <!--    <persistence-unit name="mysql-jpa-pu" transaction-type="JTA">-->
 <!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->

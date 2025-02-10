@@ -176,7 +176,7 @@
             <groupId>org.jboss.logging</groupId>
             <artifactId>jboss-logging</artifactId>
             <version>3.6.1.Final</version>
-            <scope>test</scope>
+<!--            <scope>test</scope>-->
         </dependency>
 
         <dependency>
@@ -279,11 +279,20 @@
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>5.1.1.Final</version>
                 <configuration>
+<!--                        <discover-provisioning-info>-->
+<!--                            <suggest>true</suggest>-->
+<!--&lt;!&ndash;                            <version>35.0.0.Final</version>&ndash;&gt;-->
+<!--                            <failsOnError>false</failsOnError>-->
+<!--                            <verbose>true</verbose>-->
+<!--                        </discover-provisioning-info>-->
+
+
                     <feature-packs>
                         <feature-pack>
                             <location>wildfly@maven(org.jboss.universe:community-universe)#35.0.0.Final</location>
                         </feature-pack>
                     </feature-packs>
+
                     <!-- deploys the app on root web context -->
                     <name>ROOT.war</name>
                     <!-- Enable debugging -->

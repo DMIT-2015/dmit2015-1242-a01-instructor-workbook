@@ -51,12 +51,12 @@ import jakarta.enterprise.context.ApplicationScoped;
 //		user="CO",
 //		password="Password2015"),
 //
-//	@DataSourceDefinition(
-//		name="java:app/datasources/PostgreSQLDS",
-//		className="org.postgresql.xa.PGXADataSource",
-//		url="jdbc:postgresql://localhost/DMIT2015CourseDB",
-//		user="user2015",
-//		password="Password2015"),
+	@DataSourceDefinition(
+		name="java:app/datasources/PostgreSQLDS",
+		className="org.postgresql.xa.PGXADataSource",
+		url="jdbc:postgresql://localhost/DMIT2015CourseDB",
+		user="user2015",
+		password="Password2015"),
 //
 //	@DataSourceDefinition(
 //		name="java:app/datasources/MySQLDS",
