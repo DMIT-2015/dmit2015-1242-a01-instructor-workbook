@@ -155,7 +155,7 @@
 <!--            <jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>-->
 
         <properties>
-            <!-- jakarta.persistence.schema-generation.database.action: drop-and-create, create, update, none -->
+            <!-- jakarta.persistence.schema-generation.database.action: drop-and-create, create, validate, none -->
             <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
         </properties>
     </persistence-unit>

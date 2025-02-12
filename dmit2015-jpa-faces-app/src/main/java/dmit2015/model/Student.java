@@ -44,7 +44,9 @@ public class Student implements Serializable {
 
     private String courseSection;
 
-    @Lob
+    // PostgreSQL doesn't have a native "BYTEA" type that directly mirrors the Java byte array (`byte[]`)
+//    @Lob  // Remove for PostgreSQL
+    @Column(columnDefinition = "BYTEA")     // PostgreSQL map to bytea instead of oid data type
     private byte[] picture;
 
     public Student() {

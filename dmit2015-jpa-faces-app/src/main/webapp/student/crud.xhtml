@@ -68,9 +68,28 @@
                     <p:column headerText="Last Name" filterBy="#{currentItem.lastName}">
                         <h:outputText value="#{currentItem.lastName}"/>
                     </p:column>
-                    <p:column headerText="Couse Section">
+                    <p:column headerText="Course Section">
                         <h:outputText value="#{currentItem.courseSection}"/>
                     </p:column>
+        <p:column headerText="Picture">
+          <p:graphicImage
+                  rendered="#{not empty currentItem.picture}"
+                  value="#{currentItem.picture}"
+                  width="64"
+                  height="64"
+                  stream="false"/>
+          <p:graphicImage
+              rendered="#{empty currentItem.picture}"
+              alt="No Picture"
+              value="#{resource['img/No_Image_Available.jpg']}"
+              width="64"
+              height="64"
+          />
+          <h:outputText
+              rendered="#{empty currentItem.picture}">
+              Image taken from https://commons.wikimedia.org/wiki
+          </h:outputText>
+        </p:column>
 
                     <p:column exportable="false" ariaHeaderText="Actions">
                         <p:commandButton icon="pi pi-pencil"
@@ -97,7 +116,7 @@
                 </p:dataTable>
             </h:form>
 
-            <h:form id="dialogs">
+            <h:form id="dialogs" enctype="multipart/form-data">
                 <p:dialog header="Student Details" showEffect="fade" modal="true" widgetVar="manageStudentDialog"
                           responsive="true">
 
@@ -127,6 +146,15 @@
                                         id="courseSection"
                                         value="#{currentStudentCrudView.selectedStudent.courseSection}">
                                 </p:inputText>
+                            </div>
+                            <div class="field">
+                                <p:outputLabel for="@next">Picture</p:outputLabel>
+                                <p:fileUpload
+                                        id="picture"
+                                        mode="simple"
+                                        skinSimple="true"
+                    value="#{currentStudentCrudView.uploadedImageFile}">
+                                </p:fileUpload>
                             </div>
 
                         </p:outputPanel>

@@ -31,7 +31,7 @@ public class JakartaPersistenceDatabaseSchemaGenerator {
     public static void main(String[] args) throws ClassNotFoundException {
         Class.forName("org.hibernate.jpa.HibernatePersistenceProvider");
         // The persistenceUnitName can be passed as an argument otherwise it defaults to "local-mssql-dmit2015-jpa-pu"
-        String persistenceUnitName = (args.length == 1) ? args[0] : "resource-local-mssql-dmit2015-jpa-pu";
+        String persistenceUnitName = (args.length == 1) ? args[0] : "resource-local-postgresql-jpa-pu";
         // Create a map that defines properties to control database schema generation.
         Map<String, String> properties = new HashMap<>();
         // Set the map property to drop all mapped database tables then re-create the mapped database tables..
