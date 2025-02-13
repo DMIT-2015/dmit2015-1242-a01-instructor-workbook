@@ -25,7 +25,7 @@ public class JakartaPersistenceDataGenerator {
 
     public static void generateData(EntityManager em) {
         var faker = new Faker();
-        for(int counter = 1; counter <= 32; counter++) {
+        for(int counter = 1; counter <= 5; counter++) {
             var currentStudent = new Student();
             currentStudent.setFirstName(faker.name().firstName());
             currentStudent.setLastName(faker.name().lastName());
