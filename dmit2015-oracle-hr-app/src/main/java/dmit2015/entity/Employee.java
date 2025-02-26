@@ -20,7 +20,8 @@ import java.util.Set;
 public class Employee {
 
     public String getFullName() {
-        return firstName + " " + lastName;
+//        return firstName + " " + lastName;
+        return String.format("%s %s", firstName, lastName);
     }
 
     @Id

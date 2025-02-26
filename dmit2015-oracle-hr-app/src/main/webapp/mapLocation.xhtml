@@ -1,0 +1,81 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Map Locations"/>
+
+    <ui:define name="headscripts">
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    </ui:define>
+
+    <ui:define name="maincontent">
+
+        <h1>Map Locations</h1>
+
+        <!--Display all messages in FacesContext -->
+        <p:messages id="messages">
+            <p:autoUpdate/>
+        </p:messages>
+
+        <p:dataTable id="locations"
+                     value="#{currentMapLocationView.locations}"
+                     var="currentItem">
+            <p:column headerText="Store Name">
+                <h:outputText value="#{currentItem.storeLocation}" />
+            </p:column>
+
+            <p:column headerText="Store Location">
+                <div style="width: 320px; height: 240px" id="#{currentItem.id}"></div>
+                <h:outputScript>
+
+                    // Initialize the platform object
+                    var platform = new H.service.Platform({
+                    'apikey': 'rVczblKDUJs-XSyUkLooaPkP4wcqHPaOB3oFvO1on3M'
+                    });
+                    var defaultLayers = platform.createDefaultLayers();
+
+                    // Obtain the default map types from the platform object
+                    var maptypes = platform.createDefaultLayers();
+
+                    // Instantiate (and display) the map
+                    var map = new H.Map(
+                    document.getElementById('#{currentItem.id}'),
+                    maptypes.vector.normal.map,
+                    {
+                    zoom: 10,
+                    center: { lng: #{currentItem.longitude}, lat: #{currentItem.latitude} }
+                    });
+
+                    //Step 3: make the map interactive
+                    // MapEvents enables the event system
+                    // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+                    var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+                    // Create the default UI components
+                    var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+                    var storeMarker = new H.map.Marker({lat:#{currentItem.latitude}, lng:#{currentItem.longitude}});
+                    map.addObject(storeMarker);
+
+                </h:outputScript>
+
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+
+</ui:composition>
