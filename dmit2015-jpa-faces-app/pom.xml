@@ -57,12 +57,12 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>6.6.5.Final</version>
+            <version>6.6.9.Final</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-spatial</artifactId>
-            <version>6.6.5.Final</version>
+            <version>6.6.9.Final</version>
         </dependency>
 
         <dependency>
@@ -87,6 +87,7 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>2.3.232</version>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
@@ -238,6 +239,7 @@
             <version>10.0.0</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -257,7 +259,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
+                <version>3.14.0</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
@@ -268,7 +270,7 @@
                         <path>
                             <groupId>org.hibernate.orm</groupId>
                             <artifactId>hibernate-jpamodelgen</artifactId>
-                            <version>6.6.5.Final</version>
+                            <version>6.6.9.Final</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
@@ -277,7 +279,7 @@
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
-                <version>5.1.1.Final</version>
+                <version>5.1.2.Final</version>
                 <configuration>
 <!--                        <discover-provisioning-info>-->
 <!--                            <suggest>true</suggest>-->
@@ -289,9 +291,19 @@
 
                     <feature-packs>
                         <feature-pack>
-                            <location>wildfly@maven(org.jboss.universe:community-universe)#35.0.0.Final</location>
+                            <location>wildfly@maven(org.jboss.universe:community-universe)#35.0.1.Final</location>
                         </feature-pack>
                     </feature-packs>
+
+                    <layers>
+                        <!-- https://docs.wildfly.org/35/Bootable_Guide.html#wildfly_layers -->
+                        <layer>cloud-server</layer> <!-- includes ee-security -->
+                        <layer>jpa</layer>
+                        <layer>jsf</layer>
+                        <layer>microprofile-config</layer>
+                        <layer>undertow-https</layer>
+                        <layer>h2-datasource</layer>
+                    </layers>
 
                     <!-- deploys the app on root web context -->
                     <name>ROOT.war</name>
@@ -305,6 +317,10 @@
                     <debug>true</debug>
                     <debugPort>8787</debugPort>
                     <debugSuspend>false</debugSuspend>
+
+                    <scripts>
+                        <script>./wildfly-scripts/configure-elytron.cli</script>
+                    </scripts>
                 </configuration>
             </plugin>
 
