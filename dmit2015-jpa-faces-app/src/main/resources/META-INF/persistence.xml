@@ -156,7 +156,7 @@
 
         <properties>
             <!-- jakarta.persistence.schema-generation.database.action: drop-and-create, create, validate, none -->
-            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
         </properties>
     </persistence-unit>
 

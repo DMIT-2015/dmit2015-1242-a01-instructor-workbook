@@ -30,6 +30,9 @@ public class Student implements Serializable {
 
     private static final Logger _logger = Logger.getLogger(Student.class.getName());
 
+    @Column(length=32, nullable = false)
+    private String username;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "studentid", nullable = false)
