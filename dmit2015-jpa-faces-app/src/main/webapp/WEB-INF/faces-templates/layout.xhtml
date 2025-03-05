@@ -48,6 +48,12 @@
 
                     <p:menuitem value="Student CRUD" url="#{request.contextPath}/student/crud.xhtml"/>
 
+                    <c:if test="${not empty request.userPrincipal}">
+                        <p:menuitem value="Logout #{request.userPrincipal.name}" action="#{oidcLogout.submit}" />
+                    </c:if>
+                    <c:if test="${empty request.userPrincipal}">
+                        <p:menuitem value="Login" outcome="/student/crud.xhtml" />
+                    </c:if>
                     <!--                <p:submenu label="Students" icon="pi pi-file">-->
                     <!--                    <p:menuitem value="List" icon="pi pi-list"-->
                     <!--                                url="#{request.contextPath}/students/index.xhtml"/>-->
