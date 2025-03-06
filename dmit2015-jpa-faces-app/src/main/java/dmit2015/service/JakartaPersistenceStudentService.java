@@ -26,9 +26,14 @@ public class JakartaPersistenceStudentService implements StudentService {
     @Override
     @Transactional
     public Student createStudent(Student student) {
-        // If the primary key is not an identity column then write code below here to
-        // 1) Generate a new primary key value
-        // 2) Set the primary key value for the new entity
+        // Deny access to users not in the role DMIT2015.1242.A01 or Sales.
+        boolean hasRequiredRole =
+                _securityContext.isCallerInRole("DMIT2015.1242.A01")
+                        ||
+                        _securityContext.isCallerInRole("Sales");
+        if (!hasRequiredRole) {
+            throw new SecurityException("Access denied. You don't have the permission to access this method.");
+        }
 
         String username = _securityContext.getCallerPrincipal().getName();
         student.setUsername(username);
@@ -53,7 +58,7 @@ public class JakartaPersistenceStudentService implements StudentService {
 
     @Override
     public List<Student> getAllStudents() {
-        // Deny access to anonymous users or users not in the role DMIT2015.1242.A01 or Sales.
+        // Deny access to users not in the role DMIT2015.1242.A01 or Sales.
         boolean hasRequiredRole =
                 _securityContext.isCallerInRole("DMIT2015.1242.A01")
                 ||
@@ -62,8 +67,8 @@ public class JakartaPersistenceStudentService implements StudentService {
             throw new SecurityException("Access denied. You don't have the permission to access this method.");
         }
 
-        // For the DMIT2015.1242.A02 role return all Student associated username
-        boolean isInDMIT2015A02Roles =  _securityContext.getCallerPrincipal().getName().equals("DMIT2015.1242.A02");
+        // For the DMIT2015.1242.A01 role return all Student associated username
+        boolean isInDMIT2015A02Roles =  _securityContext.isCallerInRole("DMIT2015.1242.A01");
         if (isInDMIT2015A02Roles) {
             String username = _securityContext.getCallerPrincipal().getName();
             return _entityManager.createQuery(

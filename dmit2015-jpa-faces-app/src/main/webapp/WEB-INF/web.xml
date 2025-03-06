@@ -76,7 +76,10 @@
     -->
 
 
-
+    <error-page>
+        <error-code>403</error-code>
+        <location>/errorpages/403.xhtml</location>
+    </error-page>
 
 
 </web-app>
