@@ -46,7 +46,9 @@
                     <!-- https://www.primefaces.org/showcase/icons.xhtml?jfwid=a2b2f -->
                     <p:menuitem value="Home" icon="pi pi-home" url="#{request.contextPath}/index.xhtml"/>
 
-                    <p:menuitem value="Student CRUD" url="#{request.contextPath}/student/crud.xhtml"/>
+                    <p:menuitem value="Protected Student CRUD" url="#{request.contextPath}/student/crud.xhtml"/>
+
+                    <p:menuitem value="Public Student CRUD" url="#{request.contextPath}/public/student/crud.xhtml"/>
 
                     <c:if test="${not empty request.userPrincipal}">
                         <p:menuitem value="Logout #{request.userPrincipal.name}" action="#{oidcLogout.submit}" />

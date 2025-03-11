@@ -71,6 +71,11 @@ public class StudentCrudView implements Serializable {
         }
     }
 
+    public void throwException() {
+        double answer = 2 / 0;
+
+    }
+
     /**
      * Event handler for the New button on the Faces crud page.
      * Create a new selected Student instance to enter data for.
