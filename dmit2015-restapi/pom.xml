@@ -201,21 +201,12 @@
             </plugin>
 
             <!-- Plugin to provision a server using Galleon, package your application in Galleon provisioned server,
-            deploy, redeploy, undeploy or run your application.  -->
-            <!--https://docs.wildfly.org/wildfly-glow/ -->
+deploy, redeploy, undeploy or run your application.  -->
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>5.1.2.Final</version>
                 <configuration>
-<!--                    <discover-provisioning-info>-->
-<!--                        <version>35.0.1.Final</version>-->
-<!--                        <add-ons>-->
-<!--                            <add-on>openapi</add-on>-->
-<!--                        </add-ons>-->
-<!--                    </discover-provisioning-info>-->
-<!--                    <bootable-jar>true</bootable-jar>-->
-
                     <feature-packs>
                         <feature-pack>
                             <location>wildfly@maven(org.jboss.universe:community-universe)#35.0.1.Final</location>
@@ -249,7 +240,6 @@
                     <debugPort>8797</debugPort>
                     <debugSuspend>false</debugSuspend>
 
-                    <startup-timeout>120</startup-timeout>
                 </configuration>
                 <executions>
                     <execution>

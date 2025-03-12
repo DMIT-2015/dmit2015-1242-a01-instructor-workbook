@@ -1,4 +1,4 @@
-package common.validator;
+package common.validation;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObjectBuilder;
@@ -11,7 +11,7 @@ import jakarta.validation.Validation;
  * <p>
  * The following example shows how to validate a Region object named newRegion.
  * {@snippet :
- *      String errorMessage = BeanValidator.validateBean(newRegion);
+ *      String errorMessage = JavaBeanValidator.validateBean(newRegion);
  *      if (errorMessage != null) {
  *          return Response
  *                  .status(Response.Status.BAD_REQUEST)
@@ -22,15 +22,15 @@ import jakarta.validation.Validation;
  *
  * @version 2024.06.24
  */
-public class BeanValidator {
+public class JavaBeanValidator {
 
     /**
      * Check the `typeInstance` parameter for Jakarta Validation constraint annotation violations
      * and return a JSON object string with the name and error message for each validation error.
      *
      * @param typeInstance The object with bean validation constraint annotations to validate.
-     * @param <T>          This is a generic method that can operator on a type specified by the caller.
      * @return A JSON object String with the property name and message for each validation error message.
+     * @param <T> This is a generic method that can operator on a type specified by the caller.
      */
     public static <T> String validateBean(T typeInstance) {
 

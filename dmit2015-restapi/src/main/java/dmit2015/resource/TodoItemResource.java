@@ -1,6 +1,6 @@
 package dmit2015.resource;
 
-import common.validator.BeanValidator;
+import common.validation.JavaBeanValidator;
 import dmit2015.entity.TodoItem;
 import dmit2015.repository.TodoItemRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -10,6 +10,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
+
 import java.net.URI;
 import java.util.Optional;
 
@@ -54,7 +55,7 @@ public class TodoItemResource {
             throw new BadRequestException();
         }
 
-        String errorMessage = BeanValidator.validateBean(newTodoItem);
+        String errorMessage = JavaBeanValidator.validateBean(newTodoItem);
         if (errorMessage != null) {
             return Response
                     .status(Response.Status.BAD_REQUEST)
@@ -92,7 +93,7 @@ public class TodoItemResource {
             throw new BadRequestException();
         }
 
-        String errorMessage = BeanValidator.validateBean(updatedTodoItem);
+        String errorMessage = JavaBeanValidator.validateBean(updatedTodoItem);
         if (errorMessage != null) {
             return Response
                     .status(Response.Status.BAD_REQUEST)
