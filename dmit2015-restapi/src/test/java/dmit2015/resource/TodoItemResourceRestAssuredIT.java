@@ -1,7 +1,6 @@
 package dmit2015.resource;
 
-
-import dmit2015.entity.TodoItem;
+import dmit2015.dto.TodoItemDto;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import jakarta.json.bind.Jsonb;
@@ -68,18 +67,18 @@ public class TodoItemResourceRestAssuredIT {
         String jsonBody = response.getBody().asString();
 
         Jsonb jsonb = JsonbBuilder.create();
-        List<TodoItem> queryResultList = jsonb.fromJson(jsonBody, new ArrayList<TodoItem>(){}.getClass().getGenericSuperclass());
+        List<TodoItemDto> queryResultList = jsonb.fromJson(jsonBody, new ArrayList<TodoItemDto>(){}.getClass().getGenericSuperclass());
 
-        TodoItem firstTodoItem = queryResultList.get(0);
-        assertThat(firstTodoItem.getTask())
+        TodoItemDto firstTodoItem = queryResultList.getFirst();
+        assertThat(firstTodoItem.getName())
                 .isEqualTo(firstName);
-        assertThat(firstTodoItem.isDone())
+        assertThat(firstTodoItem.isComplete())
                 .isEqualTo(firstComplete);
 
-        TodoItem lastTodoItem = queryResultList.get(queryResultList.size() - 1);
-        assertThat(lastTodoItem.getTask())
+        TodoItemDto lastTodoItem = queryResultList.getLast();
+        assertThat(lastTodoItem.getName())
                 .isEqualTo(lastName);
-        assertThat(lastTodoItem.isDone())
+        assertThat(lastTodoItem.isComplete())
                 .isEqualTo(lastComplete);
 
     }
@@ -90,9 +89,9 @@ public class TodoItemResourceRestAssuredIT {
             "Create REST Assured Integration Test,false"
     })
     void shouldCreate(String name, boolean complete) {
-        TodoItem newTodoItem = new TodoItem();
-        newTodoItem.setTask(name);
-        newTodoItem.setDone(complete);
+        TodoItemDto newTodoItem = new TodoItemDto();
+        newTodoItem.setName(name);
+        newTodoItem.setComplete(complete);
 
         // Jsonb jsonb = JsonbBuilder.create();
         // String jsonBody = jsonb.toJson(newTodoItem);
@@ -128,11 +127,11 @@ public class TodoItemResourceRestAssuredIT {
         String jsonBody = response.getBody().asString();
 
         Jsonb jsonb = JsonbBuilder.create();
-        TodoItem existingTodoItem = jsonb.fromJson(jsonBody, TodoItem.class);
+        TodoItemDto existingTodoItem = jsonb.fromJson(jsonBody, TodoItemDto.class);
 
-        assertThat(existingTodoItem.getTask())
+        assertThat(existingTodoItem.getName())
                 .isEqualTo(name);
-        assertThat(existingTodoItem.isDone())
+        assertThat(existingTodoItem.isComplete())
                 .isEqualTo(complete);
     }
 
@@ -154,10 +153,10 @@ public class TodoItemResourceRestAssuredIT {
         String jsonBody = response.getBody().asString();
 
         Jsonb jsonb = JsonbBuilder.create();
-        TodoItem existingTodoItem = jsonb.fromJson(jsonBody, TodoItem.class);
+        TodoItemDto existingTodoItem = jsonb.fromJson(jsonBody, TodoItemDto.class);
 
-        existingTodoItem.setTask(name);
-        existingTodoItem.setDone(complete);
+        existingTodoItem.setName(name);
+        existingTodoItem.setComplete(complete);
 
         String jsonTodoItem = jsonb.toJson(existingTodoItem);
 
@@ -172,7 +171,7 @@ public class TodoItemResourceRestAssuredIT {
                 .response();
 
         String putResponseJsonBody = putResponse.getBody().asString();
-        TodoItem updatedTodoItem = jsonb.fromJson(putResponseJsonBody, TodoItem.class);
+        TodoItemDto updatedTodoItem = jsonb.fromJson(putResponseJsonBody, TodoItemDto.class);
 
         assertThat(existingTodoItem)
                 .usingRecursiveComparison()
