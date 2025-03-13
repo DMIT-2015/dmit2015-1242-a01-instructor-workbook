@@ -24,6 +24,11 @@ public class MpRestClientTodoItemDtoService implements TodoItemDtoService{
         try (Response response = mpRestClient.create(todoItemDto)) {
             if (response.getStatus() != Response.Status.CREATED.getStatusCode()) {
                 throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
+            } else {
+                String location = response.getHeaderString("Location");
+                int resourceIdIndex = location.lastIndexOf("/") + 1;
+                Long resourceId = Long.parseLong(location.substring(resourceIdIndex));
+                todoItemDto.setId(resourceId);
             }
         }
         return todoItemDto;
