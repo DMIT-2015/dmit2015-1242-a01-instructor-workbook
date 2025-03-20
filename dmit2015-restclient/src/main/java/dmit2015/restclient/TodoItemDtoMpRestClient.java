@@ -41,7 +41,7 @@ import java.util.Optional;
  * </code>
  */
 @RequestScoped
-@RegisterProvider(TodoItemRestApiResponseMapper.class)
+@RegisterProvider(BadRequestResponseMapper.class)
 @RegisterRestClient(baseUri = "http://localhost:8090/restapi/TodoItemsDto")
 public interface TodoItemDtoMpRestClient {
 

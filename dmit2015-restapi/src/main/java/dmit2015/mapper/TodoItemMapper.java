@@ -1,5 +1,6 @@
-package dmit2015.dto;
+package dmit2015.mapper;
 
+import dmit2015.dto.TodoItemDto;
 import dmit2015.entity.TodoItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

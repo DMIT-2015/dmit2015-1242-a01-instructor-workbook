@@ -12,8 +12,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.target>21</maven.compiler.target>
-        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
         <junit.version>5.12.0</junit.version>
     </properties>
 
@@ -224,7 +224,10 @@ deploy, redeploy, undeploy or run your application.  -->
                     <!-- deploys the app on root web context -->
                     <name>ROOT.war</name>
 
+                    <bootable-jar>true</bootable-jar>
+
                     <server-args>
+                        <server-arg>-b=0.0.0.0</server-arg>
                         <server-arg>-Djboss.socket.binding.port-offset=10</server-arg>
                     </server-args>
                     <port>10000</port>

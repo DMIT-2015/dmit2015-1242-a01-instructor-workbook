@@ -2,7 +2,7 @@ package dmit2015.resource;
 
 import common.validation.JavaBeanValidator;
 import dmit2015.dto.TodoItemDto;
-import dmit2015.dto.TodoItemMapper;
+import dmit2015.mapper.TodoItemMapper;
 import dmit2015.entity.TodoItem;
 import dmit2015.repository.TodoItemRepository;
 import jakarta.enterprise.context.ApplicationScoped;
