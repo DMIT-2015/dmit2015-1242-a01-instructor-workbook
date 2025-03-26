@@ -1,0 +1,28 @@
+// Authorize Endpoint
+// {{server}}/auth/realms/{{realm}}/protocol/openid-connect/auth?response_type=code&client_id={{jwtClient}}
+// The token endpoint allows us to retrieve an access token, refresh token, or id token. OAuth 2.0 supports different grant types, like authorization_code, refresh_token, or password.
+// http://localhost:8180/realms/dmit2015realm/protocol/openid-connect/token
+// https://stackoverflow.com/questions/75521972/keycloak-jwt-token-groups-missing
+### Token Request Endpoint
+@keycloakserver = http://localhost:8180
+@realm = dmit2015-realm
+@user1_username = PDAVIS
+@user1_password = Password2015
+@jwtClient = dmit2015-jwt-client
+@jwtClientSecret = 78gKeV6rrAGhhNWSUCo1rFzRtuDaugTc
+POST {{keycloakserver}}/realms/{{realm}}/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+username={{user1_username}}&password={{user1_password}}&client_id={{jwtClient}}&client_secret={{jwtClientSecret}}&grant_type=password&scope=openid
+
+### UserInfo Request Endpoint
+@user1_access_token = eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ0NVZNeERtZXZvVWxER3l3R0F2S2RwRUJuTFM5R2lhNUFqVWF0b2EydGdvIn0.eyJleHAiOjE3NDMwMDgyMjIsImlhdCI6MTc0MzAwNjQyMiwianRpIjoiMjE1MzI1ZmMtNDFkNS00OTczLWFiZjUtNTRhNzgwYjBhZGI1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9kbWl0MjAxNS1yZWFsbSIsInN1YiI6IjEzNzhhYjQ5LTc0MGQtNDkwYS1hNWNlLTQxNmZhNTNhNDE1MSIsInR5cCI6IkJlYXJlciIsImF6cCI6ImRtaXQyMDE1LWp3dC1jbGllbnQiLCJzaWQiOiJiMTNkN2U0My0zODI4LTQwNDgtYjNiOC01OWMwODgyOTM4ZWMiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIi8qIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJFeGVjdXRpdmUiXX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgbWljcm9wcm9maWxlLWp3dCIsInVwbiI6InNraW5nIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiU3RldmVuIEtpbmciLCJncm91cHMiOlsiRXhlY3V0aXZlIl0sInByZWZlcnJlZF91c2VybmFtZSI6InNraW5nIiwiZ2l2ZW5fbmFtZSI6IlN0ZXZlbiIsImZhbWlseV9uYW1lIjoiS2luZyJ9.LmSEit4HEOsbGc84FTlFhph9B1XaJ_lNfMaXrm8eE3cQ-MwpMzUHORUdw1L1NOGwrU_55jMjlmDiSnoXY14YS49-g0tGBJQBQJrNGWhCWUfKokCtBov4eS89WZHLT8tEwFrY_8YjidJCziUU5dnwZy4070ltgV9F_SAzZPiAS1WS8GdOHTQu9ZLCpQd80esGWhE-hs4mbMJrutacIHLSrFfd6TrokI8IDS_at0RBj1IzAM0pVUq7QTXrsRSal0OSpGh-ZEeopjgmMD2ecNQX5o27dN-1i4a4cKTQMt-O2NsPoHSWLLK5bXlinn8QHYXBhTMKTb6TAZ4u7gKrkHYrYw
+GET {{keycloakserver}}/realms/{{realm}}/protocol/openid-connect/userinfo
+Authorization: Bearer {{user1_access_token}}
+
+### Token Request Endpoint for ActiveStudent
+@activestudent_username = CLEE1
+POST {{keycloakserver}}/realms/{{realm}}/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+username={{activestudent_username}}&password={{user1_password}}&client_id={{jwtClient}}&client_secret={{jwtClientSecret}}&grant_type=password&scope=openid
