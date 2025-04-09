@@ -1,0 +1,22 @@
+###
+
+# curl -i -X POST http://localhost:8080/restapi/batch-jobs/batchletEnforcementZoneCentre
+POST http://localhost:8080/restapi/batch-jobs/batchletEnforcementZoneCentre
+
+###
+
+# curl -i -X GET http://localhost:8080/restapi/batch-jobs/jobIdValue
+GET http://localhost:8080/restapi/batch-jobs/1
+
+###
+
+# curl -i -X POST http://localhost:8080/restapi/batch-jobs/chunkEnforcementZoneCentreCsvToSqlScriptFile
+POST http://localhost:8080/restapi/batch-jobs/chunkEnforcementZoneCentreCsvToSqlScriptFile
+
+###
+
+# curl -i -X POST http://localhost:8080/restapi/batch-jobs/chunkEnforcementZoneCentreImportCsvToDatabase
+POST http://localhost:8080/restapi/batch-jobs/chunkEnforcementZoneCentreImportCsvToDatabase
+
+###
+

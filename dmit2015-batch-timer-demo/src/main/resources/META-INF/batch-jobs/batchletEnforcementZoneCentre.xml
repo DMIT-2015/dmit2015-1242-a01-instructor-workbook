@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="batchletEnforcementZoneCentrePoint"
+     xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/jobXML_2_0.xsd" version="2.0">
+
+    <!--    <listeners>-->
+    <!--        <listener ref="enforcementZoneCentreJobListener" />-->
+    <!--    </listeners>-->
+
+    <step id="step1">
+        <!--
+                <listeners>
+                    <listener ref="itemStepListener" />
+                </listeners>
+        -->
+        <batchlet ref="enforcementZoneCentreBatchlet">
+            <properties>
+                <property name="input_file" value="/home/user2015/Downloads/All_Photo_Enforcement_Zone_Centre_Points_20250407.csv" />
+            </properties>
+        </batchlet>
+    </step>
+
+</job>

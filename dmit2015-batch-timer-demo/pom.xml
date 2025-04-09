@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dmit2015</groupId>
+    <artifactId>dmit2015-batch-timer-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>dmit2015-batch-timer-demo</name>
+    <packaging>war</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <junit.version>5.10.2</junit.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.batch</groupId>
+            <artifactId>jakarta.batch-api</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.38</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.6.11.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-spatial</artifactId>
+            <version>6.6.11.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>12.10.0.jre11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>23.7.0.25.01</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>10.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+
+            <!-- Plugin to run unit tests-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.3</version>
+            </plugin>
+
+            <!-- Plugin to run functional tests -->
+            <!--  mvn failsafe:integration-test -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.5.3</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>5.1.2.Final</version>
+                <configuration>
+                    <discover-provisioning-info>
+                        <excludedArchives>
+                            <archive>omnifaces-4.6.1.jar</archive>
+                            <archive>hibernate-core-6.6.11.Final.jar</archive>
+                            <archive>logback-core-1.5.18.jar</archive>
+                            <archive>h2-2.3.232.jar</archive>
+                            <archive>ojdbc11-23.7.0.25.01.jar</archive>
+                            <archive>log4j-core-2.24.3.jar</archive>
+                        </excludedArchives>
+                        <version>35.0.1.Final</version>
+                        <suggest>true</suggest>
+                        <verbose>true</verbose>
+                    </discover-provisioning-info>
+
+                    <bootableJar>true</bootableJar>
+
+                    <!-- deploys the app on root web context -->
+                    <name>ROOT.war</name>
+
+                    <!-- Enable debugging -->
+                    <!-- https://www.jetbrains.com/help/idea/attaching-to-local-process.html#attach-to-local -->
+                    <!-- To attach a debugger to the running server from IntelliJ IDEA
+                        1. From the main menu, choose `Run | Attach to Process`
+                        2. IntelliJ IDEA will show the list of running local processes.
+                            Select the process with the `jboss-module.jar (8787)` name to attach to.
+                    -->
+                    <debug>true</debug>
+                    <debugPort>8787</debugPort>
+                    <debugSuspend>false</debugSuspend>
+
+                </configuration>
+            </plugin>
+
+            <!-- Plugin to build a bootable JAR for WildFly -->
+            <plugin>
+                <!-- https://docs.wildfly.org/bootablejar/#wildfly_jar_dev_mode -->
+                <!-- mvn wildfly-jar:dev-watch -->
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-jar-maven-plugin</artifactId>
+                <version>12.0.0.Final</version>
+                <configuration>
+                    <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#35.0.1.Final</feature-pack-location>
+                    <layers>
+                        <!-- https://docs.wildfly.org/34/Bootable_Guide.html#wildfly_layers -->
+                        <layer>jaxrs-server</layer>
+                        <layer>ejb</layer>
+                        <layer>mail</layer>
+                        <layer>batch-jberet</layer>
+                        <layer>microprofile-config</layer>
+                        <layer>jsf</layer>
+                    </layers>
+                    <excluded-layers>
+                        <layer>deployment-scanner</layer>
+                    </excluded-layers>
+                    <plugin-options>
+                        <jboss-fork-embedded>true</jboss-fork-embedded>
+                    </plugin-options>
+                    <!-- https://docs.wildfly.org/bootablejar/#wildfly_jar_enabling_debug -->
+                    <jvmArguments>
+                        <!-- https://www.jetbrains.com/help/idea/attaching-to-local-process.html#attach-to-local -->
+                        <!-- To attach a debugger to the running server from IntelliJ IDEA
+                            1. From the main menu, choose `Run | Attach to Process`
+                            2. IntelliJ IDEA will show the list of running local processes. Select the process with the `xxx-bootable.jar` name to attach to.
+                        -->
+                        <arg>-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n</arg>
+                    </jvmArguments>
+                    <timeout>120</timeout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
