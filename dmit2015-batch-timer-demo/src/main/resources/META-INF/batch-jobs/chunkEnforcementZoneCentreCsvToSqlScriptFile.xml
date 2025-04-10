@@ -5,7 +5,7 @@
 
     <properties>
         <property name="input_file" value="/home/user2015/Downloads/All_Photo_Enforcement_Zone_Centre_Points_20250407.csv"/>
-        <property name="output_file" value="/home/user2015/Downloads/All_All_Photo_Enforcement_Zone_Centre_Points_20250407.sql"/>
+        <property name="output_file" value="/home/user2015/Downloads/All_Photo_Enforcement_Zone_Centre_Points_20250407.sql"/>
         <property name="table_name" value="edmonton_scheduled_photo_enforcement_zone_centre_point"/>
     </properties>
 

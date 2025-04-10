@@ -25,7 +25,7 @@ import java.util.Optional;
 @Dependent
 public class EnforcementZoneCentreBatchlet extends AbstractBatchlet {
 
-    @PersistenceContext//(unitName = "mssql-jpa-pu")
+    @PersistenceContext(unitName = "mssql-jpa-pu")
     private EntityManager _entityManager;
 
     @Inject

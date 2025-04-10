@@ -16,7 +16,7 @@ import java.util.List;
 @Dependent
 public class EnforcementZoneCentreEntityToDatabaseItemWriter extends AbstractItemWriter {
 
-    @PersistenceContext//(unitName = "mssql-jpa-pu")
+    @PersistenceContext(unitName = "mssql-jpa-pu")
     private EntityManager _entityManager;
 
     /**

@@ -1,0 +1,69 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="DMIT2015 Batch Job and Timer | Home"/>
+
+    <ui:define name="maincontent">
+        <h1>DMIT2015 Batch Job and Timer | Home</h1>
+
+        <div class="card">
+            <h1>Manage Timers</h1>
+
+            <p:messages id="messages" />
+
+            <p:link outcome="/index" value="Home">
+            </p:link>
+
+            <h:form >
+                <p:commandButton
+                        value="Cancel All Timers"
+                        action="#{timerView.cancelAllTimers}"
+                        immediate="true"
+                        update="timersTable"
+                >
+                </p:commandButton>
+
+                <p:dataTable
+                        id="timersTable"
+                        value="#{timerView.list()}"
+                        var="currentTimer"
+                >
+
+                    <p:column headerText="Timer Info" >
+                        <h:outputText value="#{currentTimer.info}" />
+                    </p:column>
+
+                    <p:column headerText="Schedule" >
+                        <h:outputText value="#{currentTimer.schedule.toString()}" />
+                    </p:column>
+
+                    <p:column headerText="Action">
+                        <p:commandButton
+                                icon="pi pi-trash"
+                                value="Cancel"
+                                action="#{timerView.cancelTimer(currentTimer)}"
+                                ajax="false" />
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+
+        </div>
+
+    </ui:define>
+
+</ui:composition>

@@ -13,6 +13,13 @@ import jakarta.enterprise.context.ApplicationScoped;
 		user="user2015",
 		password="Password2015"),
 
+	@DataSourceDefinition(
+			name="java:app/datasources/MSSQLServerDWPubsSalesDS",
+			className="com.microsoft.sqlserver.jdbc.SQLServerDataSource",
+			url="jdbc:sqlserver://localhost;databaseName=DWPubsSales;TrustServerCertificate=true",
+			user="user2015",
+			password="Password2015"),
+
 //	@DataSourceDefinition(
 //		name="java:app/datasources/oracleUser2015DS",
 //		className="oracle.jdbc.xa.client.OracleXADataSource",

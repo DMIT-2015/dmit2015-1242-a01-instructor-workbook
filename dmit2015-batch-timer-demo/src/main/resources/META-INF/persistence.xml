@@ -17,6 +17,16 @@
         </properties>
     </persistence-unit>
 
+    <persistence-unit name="mssql-dwpubsales-jpa-pu" transaction-type="JTA">
+        <jta-data-source>java:app/datasources/MSSQLServerDWPubsSalesDS</jta-data-source>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+            <property name="hibernate.jdbc.batch_size" value="50" />
+        </properties>
+    </persistence-unit>
+
     <!--        <persistence-unit name="oracle-jpa-user2015-pu" transaction-type="JTA">-->
     <!--            <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
     <!--            <jta-data-source>java:app/datasources/oracleUser2015DS</jta-data-source>-->
